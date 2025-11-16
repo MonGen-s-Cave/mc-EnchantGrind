@@ -1,0 +1,6 @@
+name: mc-EnchantGrind
+version: '1.0.0'
+main: com.mongenscave.mcenchantgrind.McEnchantGrind
+api-version: '1.18'
+authors: [ coma112 ]
+folia-supported: true

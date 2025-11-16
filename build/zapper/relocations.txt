@@ -1,0 +1,3 @@
+org.bstats:com.mongenscave.mcenchantgrind.bstats
+com.github.Anon8281.universalScheduler:com.mongenscave.mcenchantgrind.universalScheduler
+dev.dejvokep.boostedyaml:com.mongenscave.mcenchantgrind.boostedyaml

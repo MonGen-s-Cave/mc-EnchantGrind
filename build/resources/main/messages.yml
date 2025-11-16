@@ -1,0 +1,6 @@
+prefix: "&#9F69B8[EnchantGrind]"
+
+messages:
+  reload: "%prefix% &aYou have successfully reloaded the files!"
+  no-permission: "%prefix% &cYou don't have permission for this!"
+  not-enough-level: "%prefix% &cYou don't have enough level for this!"

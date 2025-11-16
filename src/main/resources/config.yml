@@ -1,0 +1,32 @@
+aliases:
+  - "grindstone"
+  - "gs"
+
+settings:
+  click-sound: BLOCK_NOTE_BLOCK_BELL # This sound will play on every click action in the menu
+  before-symbol: "• " # This is the symbol which indicates the enchantment you at
+  after-symbol: " » " # This is the symbol which indicates the level you select
+  selected-enchantment-color: "&a"
+  unselected-enchantment-color: "&7"
+  price-xp-per-level: 1 # This is the cost of the use per level so if you take off unbreaking 2 it will deduct 2 xp because 2 * 1 = 2
+
+menu:
+  title: "&bɢʀɪɴᴅꜱᴛᴏɴᴇ" # The title in the menu
+  size: 27
+  input-slot: 10
+  output-slot: 16
+  display-slot: 13
+  items:
+    filler-glass-item:
+      material: BLACK_STAINED_GLASS_PANE
+      name: " "
+      slot: "0,1,2,3,4,5,6,7,8,9,11,12,13,14,15,17,18,19,20,21,22,23,24,25,26"
+      lore: []
+    enchantment-book-item:
+      material: ENCHANTED_BOOK
+      name: "&bᴇɴᴄʜᴀɴᴛᴍᴇɴᴛꜱ"
+      slot: 16
+      lore:
+        - ""
+        - " &8| &aᴀᴠᴀɪʟᴀʙʟᴇ ᴇɴᴄʜᴀɴᴛᴍᴇɴᴛꜱ"
+        - ""
