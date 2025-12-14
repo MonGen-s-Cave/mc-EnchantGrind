@@ -9,6 +9,7 @@ import com.mongenscave.mcenchantgrind.listeners.GrindstoneListener;
 import com.mongenscave.mcenchantgrind.listeners.MenuListener;
 import com.mongenscave.mcenchantgrind.utils.LoggerUtils;
 import com.mongenscave.mcenchantgrind.utils.RegisterUtils;
+import dev.dejvokep.boostedyaml.dvs.versioning.BasicVersioning;
 import dev.dejvokep.boostedyaml.settings.dumper.DumperSettings;
 import dev.dejvokep.boostedyaml.settings.general.GeneralSettings;
 import dev.dejvokep.boostedyaml.settings.loader.LoaderSettings;
@@ -42,7 +43,7 @@ public final class McEnchantGrind extends ZapperJavaPlugin {
         enchantHandler = new EnchantHandler();
         nameCache = new NameCache();
 
-        //RegisterUtils.registerCommands();
+        RegisterUtils.registerCommands();
 
         getServer().getPluginManager().registerEvents(new MenuListener(), this);
         getServer().getPluginManager().registerEvents(new GrindstoneListener(), this);
@@ -70,6 +71,7 @@ public final class McEnchantGrind extends ZapperJavaPlugin {
 
         final UpdaterSettings updaterSettings = UpdaterSettings.builder()
                 .setKeepAll(true)
+                .setVersioning(new BasicVersioning("version"))
                 .build();
 
         config = loadConfig("config.yml", generalSettings, loaderSettings, updaterSettings);

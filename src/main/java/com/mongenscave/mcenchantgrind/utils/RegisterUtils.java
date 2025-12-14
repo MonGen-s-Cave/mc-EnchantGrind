@@ -10,11 +10,11 @@ import revxrsal.commands.orphan.Orphans;
 
 @UtilityClass
 public class RegisterUtils {
-    //public void registerCommands() {
-    //    var lamp = BukkitLamp.builder(McEnchantGrind.getInstance())
-    //            .exceptionHandler(new CommandExceptionHandler())
-    //            .build();
-//
-    //    lamp.register(Orphans.path(ConfigKeys.ALIASES.getList().toArray(String[]::new)).handler(new CommandEnchantGrind()));
-    //}
+    public void registerCommands() {
+        var lamp = BukkitLamp.builder(McEnchantGrind.getInstance())
+                .exceptionHandler(new CommandExceptionHandler())
+                .build();
+
+        lamp.register(Orphans.path(ConfigKeys.ALIASES.getList().toArray(String[]::new)).handler(new CommandEnchantGrind()));
+    }
 }

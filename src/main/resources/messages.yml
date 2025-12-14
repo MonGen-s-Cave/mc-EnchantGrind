@@ -4,3 +4,5 @@ messages:
   reload: "%prefix% &aYou have successfully reloaded the files!"
   no-permission: "%prefix% &cYou don't have permission for this!"
   not-enough-funds: "%prefix% &cYou don't have enough level for this!"
+
+version: '1'

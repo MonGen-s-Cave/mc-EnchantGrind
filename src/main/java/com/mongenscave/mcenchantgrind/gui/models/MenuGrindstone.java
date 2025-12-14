@@ -1,6 +1,5 @@
 package com.mongenscave.mcenchantgrind.gui.models;
 
-import com.mongenscave.mcenchantgrind.McEnchantGrind;
 import com.mongenscave.mcenchantgrind.data.MenuController;
 import com.mongenscave.mcenchantgrind.gui.Menu;
 import com.mongenscave.mcenchantgrind.handler.EnchantHandler;
@@ -10,6 +9,7 @@ import com.mongenscave.mcenchantgrind.identifiers.keys.MessageKeys;
 import com.mongenscave.mcenchantgrind.item.ItemFactory;
 import com.mongenscave.mcenchantgrind.processors.MessageProcessor;
 import com.mongenscave.mcenchantgrind.utils.GrindstoneUtils;
+import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -21,13 +21,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings("deprecation")
 public final class MenuGrindstone extends Menu {
     private static final String MENU_ITEMS_PATH = "menu.items";
 
+    @Getter
     private final EnchantHandler enchantHandler;
     private final int inputSlot;
     private final int outputSlot;
@@ -35,7 +35,7 @@ public final class MenuGrindstone extends Menu {
 
     public MenuGrindstone(@NotNull MenuController menuController) {
         super(menuController);
-        this.enchantHandler = McEnchantGrind.getInstance().getEnchantHandler();
+        this.enchantHandler = new EnchantHandler();
         this.inputSlot = ConfigKeys.MENU_INPUT_SLOT.getInt();
         this.outputSlot = ConfigKeys.MENU_OUTPUT_SLOT.getInt();
         this.displaySlot = ConfigKeys.MENU_DISPLAY_SLOT.getInt();
@@ -67,7 +67,7 @@ public final class MenuGrindstone extends Menu {
         if (slot == inputSlot) handleInputSlot(event);
         else if (slot == outputSlot) handleOutputSlot(event);
         else if (event.isShiftClick() && event.getClickedInventory() == event.getView().getBottomInventory()) handleShiftClick(event);
-        else handleEnchantDisplay(event);
+        else if (slot == displaySlot) handleEnchantDisplay(event);
     }
 
     @Override
@@ -98,8 +98,6 @@ public final class MenuGrindstone extends Menu {
     }
 
     private void handleOutputSlot(final @NotNull InventoryClickEvent event) {
-        if (event.getClick().isShiftClick()) return;
-
         ItemStack output = event.getCurrentItem();
         if (output == null || !GrindstoneUtils.isValidItem(output)) return;
 
@@ -118,7 +116,11 @@ public final class MenuGrindstone extends Menu {
             GrindstoneUtils.safeGiveItem(player, modifiedInput);
         }
 
-        event.setCursor(output.clone());
+        if (!event.isShiftClick()) {
+            event.setCursor(output.clone());
+        } else {
+            GrindstoneUtils.safeGiveItem(player, output.clone());
+        }
 
         clearInput();
         getInventory().setItem(outputSlot, null);

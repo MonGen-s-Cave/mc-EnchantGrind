@@ -16,4 +16,8 @@ public record MenuController(@NotNull Player owner) {
     public static void remove(@NotNull Player player) {
         menuMap.remove(player.getUniqueId());
     }
+
+    public static boolean hasMenu(@NotNull Player player) {
+        return menuMap.containsKey(player.getUniqueId());
+    }
 }
